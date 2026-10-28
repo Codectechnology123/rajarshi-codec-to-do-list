@@ -1,6 +1,6 @@
-import "dotenv/config";
-import mongoose from "mongoose";
-import app from "./app.js";
+require("dotenv").config();
+const mongoose = require("mongoose");
+const app = require("./app");
 const port = Number(process.env.PORT) || 5000;
 async function start() {
   if (!process.env.MONGODB_URI) throw new Error("MONGODB_URI is missing. Add it to backend/.env before starting the server.");
