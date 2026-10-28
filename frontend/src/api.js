@@ -1,8 +1,8 @@
-const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000/api").replace(/\/$/, "");
+const BASE = (import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "/api" : "http://localhost:5000/api")).replace(/\/$/, "");
 
 export async function request(path, options = {}) {
   const token = localStorage.getItem("daymark_token");
-  const response = await fetch(`${API_URL}${path}`, {
+  const response = await fetch(`${BASE}${path}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",
